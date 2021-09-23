@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import stripe
+from django.http import HttpResponseRedirect, response
 
 stripe.api_key = "sk_test_51JcPSlFTOXGpyrVRGifT9KJPhZ0RegN3qgU8EVsjZNfvE1TNzeTQdlUuGmKhYEawshRKtlOq2MNKehLRFZ7lTqQt00nLhq3VjA"
 
@@ -22,6 +23,9 @@ def index(request):
             currency='usd',
             description='Donation'
         )
+        request.session['amount'] = str(amount) + '.00 $'
+
+        return HttpResponseRedirect('/pay/success/')
         
         
     resp = 'OKEY'

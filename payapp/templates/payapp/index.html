@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends "base_app.html" %}
 
     {% block title %}
         PayMent
     {% endblock %}
 
+
     {% block container %}
-        <h4> {{ response }} </h4>
+{% if user.is_authenticated %}
+        
+        <h4> {{ user.username }} </h4>
     
         <form action="{% url 'index_pay' %}" method="post" id="payment-form">
             {% csrf_token %}
@@ -76,5 +79,8 @@
             form.submit();  
         }
         </script>
+        {% else %}
+        <a href={% url 'account_login' %}>Sign In</a>
+{% endif %}
 
 {% endblock %}

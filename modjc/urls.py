@@ -3,6 +3,8 @@ from django.urls import path, include
 from .views import LoginCustomView, SignUpCustomView
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
