@@ -1,0 +1,15 @@
+{% extends 'base_app.html' %}
+
+{% block title %}
+    Movies List
+{% endblock %}
+
+{% block container %}
+
+{% if user.is_authenticated  %}
+<h2>MOVIES</h2>
+{% else %}
+<h3>not sign in</h3>
+{% endif %}
+
+{% endblock %}
